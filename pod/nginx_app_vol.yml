@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-demo
+  labels:
+    app: nginx
+    env: prod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.22.0
+    ports:
+      - name: nginx-port
+        containerPort: 80
+        protocol: TCP
+    env:
+      - name: DB_USER
+        value: "admin"
+      - name: DB_PASSWORD
+        value: "password"
+      - name: NGINX_PORT
+        value: "80"
+    resources:
+      limits: # Max Limit
+        memory: "506Mi"
+        cpu: "500m" #0.5 CPU cores
+      requests: # Min Limit
+        memory: "250Mi"
+        cpu: "250m" #0.25 CPU cores
+    volumeMounts:
+    - name: nginx-data
+      mountPath: /var/www/html
+  volumes:
+  - name: nginx-data
+    emptyDir: {}

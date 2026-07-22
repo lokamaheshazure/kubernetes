@@ -32,6 +32,13 @@ spec:
           image: nginx:1.22.0
           ports:
             - containerPort: 80
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
           volumeMounts:
             - name: nginx-data
               mountPath: /usr/share/nginx/html

@@ -23,8 +23,8 @@ spec:
           image: alpine:3.14
           command: ["/bin/sh"]
           args: ["-c", "while true; do date >> /var/log/index.html; sleep 10; done"]
-          ports:
-            - containerPort: 80
+          #ports:
+          #  - containerPort: 80
           volumeMounts:
             - name: shared-data
               mountPath: /var/log

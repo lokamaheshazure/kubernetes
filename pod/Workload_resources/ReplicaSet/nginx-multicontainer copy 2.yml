@@ -9,6 +9,10 @@ metadata:
 spec:
   replicas: 3
   selector:
+    matchLabels:
+      app: nginx
+      env: prod
+      release: v1.0
     matchExpressions:
       - key: app
         operator: In

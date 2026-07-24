@@ -1,14 +1,18 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: nginx-demo-rs
+  name: nginx-demo-deployment
   labels:
     app: nginx
-    type: rs-prod
+    type: deployment-prod
     env: prod
 spec:
   replicas: 3
   selector:
+    matchLabels:
+      app: nginx
+      env: prod
+      release: v1.0
     matchExpressions:
       - key: app
         operator: In

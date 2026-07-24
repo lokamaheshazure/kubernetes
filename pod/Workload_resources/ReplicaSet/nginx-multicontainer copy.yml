@@ -9,20 +9,10 @@ metadata:
 spec:
   replicas: 3
   selector:
-    matchExpressions:
-      - key: app
-        operator: In
-        values:
-          - nginx
-      - key: env
-        operator: In
-        values:
-          - prod
-      - key: release
-        operator: In
-        values:
-          - v1.0
-          - v1.1
+    matchLabels:
+      app: nginx
+      env: prod
+      release: v1.0
   template:
     metadata:
       name: nginx-demo-pod
